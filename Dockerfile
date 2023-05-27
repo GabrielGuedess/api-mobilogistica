@@ -14,6 +14,8 @@ RUN pnpm install
 
 RUN pnpm prisma generate
 
+RUN pnpm prisma db push
+
 USER node
 
 # BUILD
@@ -37,6 +39,8 @@ ENV NODE_ENV production
 RUN pnpm install --prod --ignore-scripts
 
 RUN npx prisma generate
+
+RUN npx prisma db push
 
 USER node
 

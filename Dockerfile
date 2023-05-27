@@ -34,7 +34,7 @@ RUN pnpm build
 
 ENV NODE_ENV production
 
-RUN pnpm install --prod --ignore-scripts
+RUN pnpm install --ignore-scripts
 
 RUN npx prisma generate
 

@@ -14,8 +14,6 @@ RUN pnpm install
 
 RUN pnpm prisma generate
 
-RUN pnpm prisma db push
-
 USER node
 
 # BUILD

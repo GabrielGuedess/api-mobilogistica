@@ -7,6 +7,7 @@ import { User } from 'app/entities/User';
 import { UserRepository } from 'app/repositories/UserRepository';
 
 interface CreateUserUseCaseRequest {
+  id?: string;
   name: string;
   email: string;
   password: string;
@@ -21,6 +22,7 @@ export class CreateUserUseCase {
     const passwordHash = await hash(request.password, 8);
 
     const createUser = new User({
+      id: request.id,
       email: request.email,
       name: request.name,
       password: passwordHash,

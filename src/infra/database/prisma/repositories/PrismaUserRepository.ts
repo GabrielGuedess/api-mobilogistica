@@ -20,6 +20,10 @@ export class PrismaUserRepository implements UserRepository {
       where: { number: { in: user.telephones.map(item => item.number) } },
     });
 
+    if (userExist) {
+      throw new HttpException('User already exists!', HttpStatus.CONFLICT);
+    }
+
     if (numberExist?.length > 0) {
       throw new HttpException(
         `Number (${numberExist
@@ -27,10 +31,6 @@ export class PrismaUserRepository implements UserRepository {
           .join(', ')}) already exists!`,
         HttpStatus.CONFLICT,
       );
-    }
-
-    if (userExist) {
-      throw new HttpException('User already exists!', HttpStatus.CONFLICT);
     }
 
     const numbers = user.telephones.map(telephones =>

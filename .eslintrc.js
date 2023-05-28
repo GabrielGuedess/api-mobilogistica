@@ -30,6 +30,14 @@ module.exports = {
     jest: true,
     'jest/globals': true,
   },
+  overrides: [
+    {
+      files: ['**.spec.ts'],
+      rules: {
+        'import/extensions': 'off',
+      },
+    },
+  ],
   rules: {
     'prettier/prettier': 'error',
     'jest/expect-expect': 'off',
